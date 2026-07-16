@@ -55,6 +55,17 @@ const TOOLS: Tool[] = [
     repo: "https://github.com/Dhananjay-ku-seth/comms-simulator",
     icon: <path d="M12 4v16M6 8l-3 4 3 4M18 8l3 4-3 4" />,
   },
+  {
+    id: "waveform",
+    name: "Waveform Viewer",
+    tag: "Digital Timing",
+    desc: "Click to drive a D flip-flop, clock divider, counter, or shift register — Verilog-style timing diagrams that update live.",
+    accent: "#fb923c",
+    glow: "rgba(251,146,60,0.35)",
+    demo: "https://waveform-viewer.vercel.app/",
+    repo: "https://github.com/Dhananjay-ku-seth/waveform-viewer",
+    icon: <path d="M2 12h3v-4h3v8h3v-6h3v6h3v-4h3" />,
+  },
 ];
 
 function Logo() {

@@ -82,15 +82,46 @@ export default async function handler(req, res) {
     },
   });
 
+  const amount = ((payment.amount || 0) / 100).toFixed(2);
+  const currency = payment.currency || "INR";
+  const paidAt = new Date((payment.created_at || Date.now() / 1000) * 1000).toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+
+  const summaryText =
+    `Payment summary\n` +
+    `----------------\n` +
+    `Item:        ${product.label}\n` +
+    `Amount paid: ${currency} ${amount}\n` +
+    `Payment ID:  ${payment.id}\n` +
+    `Date:        ${paidAt} IST\n`;
+
+  const summaryHtml =
+    `<table style="border-collapse:collapse;margin:16px 0;font-family:sans-serif;font-size:14px">` +
+    `<tr><td style="padding:4px 12px 4px 0;color:#666">Item</td><td><b>${product.label}</b></td></tr>` +
+    `<tr><td style="padding:4px 12px 4px 0;color:#666">Amount paid</td><td><b>${currency} ${amount}</b></td></tr>` +
+    `<tr><td style="padding:4px 12px 4px 0;color:#666">Payment ID</td><td>${payment.id}</td></tr>` +
+    `<tr><td style="padding:4px 12px 4px 0;color:#666">Date</td><td>${paidAt} IST</td></tr>` +
+    `</table>`;
+
   await transporter.sendMail({
     from: `LabBench <${process.env.GMAIL_USER}>`,
     to: email,
-    subject: `Your ${product.label} download`,
+    subject: `Your ${product.label} download (Payment ${payment.id})`,
     text:
       `Thanks for supporting LabBench!\n\n` +
-      `Your PDF, "${product.label}", is attached.\n\n` +
+      summaryText +
+      `\nYour PDF, "${product.label}", is attached.\n\n` +
       `More tools: https://labbench-hub.vercel.app/\n\n` +
       `- Dhananjay`,
+    html:
+      `<p>Thanks for supporting LabBench!</p>` +
+      summaryHtml +
+      `<p>Your PDF, "<b>${product.label}</b>", is attached.</p>` +
+      `<p>More tools: <a href="https://labbench-hub.vercel.app/">labbench-hub.vercel.app</a></p>` +
+      `<p>- Dhananjay</p>`,
     attachments: [
       {
         filename: product.attachmentName,

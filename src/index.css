@@ -22,6 +22,11 @@ h1 { margin: 0; font-size: 28px; letter-spacing: 1px; color: #fff; font-weight: 
 .pill { color: var(--dim); font-size: 12.5px; border: 1px solid var(--line); padding: 7px 14px;
   border-radius: 20px; text-decoration: none; white-space: nowrap; transition: .15s; }
 .pill:hover { color: #fff; border-color: var(--amber); }
+.header-links { display: flex; align-items: center; gap: 10px; }
+.support-pill { color: var(--amber); font-size: 12.5px; font-weight: 600; border: 1px solid rgba(245,166,35,0.4);
+  background: rgba(245,166,35,0.1); padding: 7px 14px; border-radius: 20px; text-decoration: none;
+  white-space: nowrap; transition: .15s; }
+.support-pill:hover { background: rgba(245,166,35,0.2); }
 
 .hero { text-align: center; max-width: 640px; margin: 44px auto 40px; }
 .hero h2 { font-size: 30px; color: #fff; margin: 0 0 12px; line-height: 1.25; }

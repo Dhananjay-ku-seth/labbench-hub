@@ -91,13 +91,16 @@ export default function App() {
             <p className="tag">Your engineering lab, in the browser.</p>
           </div>
         </div>
-        <a className="pill" href="https://dhananjay-kumar-seth.vercel.app/" target="_blank" rel="noopener noreferrer">
-          by Dhananjay Kumar Seth ↗
-        </a>
+        <div className="header-links">
+          <a className="support-pill" href="https://rzp.io/rzp/hBy3YQN" target="_blank" rel="noopener noreferrer">☕ Support</a>
+          <a className="pill" href="https://dhananjay-kumar-seth.vercel.app/" target="_blank" rel="noopener noreferrer">
+            by Dhananjay Kumar Seth ↗
+          </a>
+        </div>
       </header>
 
       <section className="hero">
-        <h2>Four interactive engineering tools. Zero installs.</h2>
+        <h2>Five interactive engineering tools. Zero installs.</h2>
         <p>
           DSP, control systems, digital logic, and communications — concepts that usually live in
           textbooks and MATLAB scripts, turned into things you can click, drag, and tune in real time.
@@ -126,8 +129,9 @@ export default function App() {
       <section className="pricing">
         <div className="pricing-card free">
           <span className="ptag">Free</span>
-          <h3>All 4 tools, fully open</h3>
+          <h3>All 5 tools, fully open</h3>
           <p>Every demo above is free to use for personal, educational, and portfolio purposes — no account, no limits.</p>
+          <a className="notify support-link" href="https://rzp.io/rzp/hBy3YQN" target="_blank" rel="noopener noreferrer">☕ Enjoying it? Support LabBench →</a>
         </div>
         <div className="pricing-card pro">
           <span className="ptag pro-tag">Pro · Coming Soon</span>

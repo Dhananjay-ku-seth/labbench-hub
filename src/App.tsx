@@ -62,7 +62,7 @@ const TOOLS: Tool[] = [
     desc: "Click to drive a D flip-flop, clock divider, counter, or shift register — Verilog-style timing diagrams that update live.",
     accent: "#fb923c",
     glow: "rgba(251,146,60,0.35)",
-    demo: "https://waveform-viewer.vercel.app/",
+    demo: "https://waveform-viewer-theta.vercel.app/",
     repo: "https://github.com/Dhananjay-ku-seth/waveform-viewer",
     icon: <path d="M2 12h3v-4h3v8h3v-6h3v6h3v-4h3" />,
   },

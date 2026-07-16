@@ -92,7 +92,6 @@ export default function App() {
           </div>
         </div>
         <div className="header-links">
-          <a className="support-pill" href="https://rzp.io/rzp/hBy3YQN" target="_blank" rel="noopener noreferrer">☕ Support</a>
           <a className="pill" href="https://dhananjay-kumar-seth.vercel.app/" target="_blank" rel="noopener noreferrer">
             by Dhananjay Kumar Seth ↗
           </a>
@@ -131,7 +130,6 @@ export default function App() {
           <span className="ptag">Free</span>
           <h3>All 5 tools, fully open</h3>
           <p>Every demo above is free to use for personal, educational, and portfolio purposes — no account, no limits.</p>
-          <a className="notify support-link" href="https://rzp.io/rzp/hBy3YQN" target="_blank" rel="noopener noreferrer">☕ Enjoying it? Support LabBench →</a>
         </div>
         <div className="pricing-card pro">
           <span className="ptag pro-tag">Pro · Coming Soon</span>

@@ -5,7 +5,7 @@
 The brand hub for a suite of interactive engineering tools — real-time DSP, PID control, digital
 logic, and communication systems, each runnable with zero installs.
 
-**Live:** _add your Vercel URL here_
+**Live:** https://labbench-hub.vercel.app/
 
 ## The suite
 

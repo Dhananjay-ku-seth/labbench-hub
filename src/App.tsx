@@ -132,10 +132,11 @@ export default function App() {
           <p>Every demo above is free to use for personal, educational, and portfolio purposes — no account, no limits.</p>
         </div>
         <div className="pricing-card pro">
-          <span className="ptag pro-tag">Pro · Coming Soon</span>
-          <h3>Saved sessions, exports &amp; classroom mode</h3>
-          <p>Save/share circuit &amp; signal setups, export plots and reports, and a classroom mode for instructors. Low-cost, one-time or subscription — details soon.</p>
-          <a className="notify" href="mailto:adplayers746@gmail.com?subject=LabBench%20Pro%20waitlist">Get notified →</a>
+          <span className="ptag pro-tag">Pro · ₹29/mo</span>
+          <h3>Cloud-saved sessions, everywhere</h3>
+          <p>Sign in once, then save &amp; reload your circuits, tunings, and setups on every tool — plus export
+            Waveform Viewer diagrams as PNG, SVG, or VCD. One subscription unlocks Pro on all 5 tools.</p>
+          <a className="notify" href="https://logic-circuit-sim.vercel.app/" target="_blank" rel="noopener noreferrer">Sign in &amp; upgrade →</a>
         </div>
       </section>
 

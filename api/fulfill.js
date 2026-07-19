@@ -28,6 +28,18 @@ const PRODUCTS = [
     attachmentName: "The Making of LabBench.pdf",
     label: "The Making of LabBench",
   },
+  {
+    match: "cheat sheet",
+    file: "LabBench_Cheat_Sheets.pdf",
+    attachmentName: "LabBench Cheat Sheets.pdf",
+    label: "LabBench Cheat Sheets",
+  },
+  {
+    match: "interview prep",
+    file: "LabBench_Interview_Prep_Kit.pdf",
+    attachmentName: "LabBench Interview Prep Kit.pdf",
+    label: "LabBench Interview Prep Kit",
+  },
 ];
 
 export default async function handler(req, res) {

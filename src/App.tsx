@@ -66,6 +66,28 @@ const TOOLS: Tool[] = [
     repo: "https://github.com/Dhananjay-ku-seth/waveform-viewer",
     icon: <path d="M2 12h3v-4h3v8h3v-6h3v6h3v-4h3" />,
   },
+  {
+    id: "fsm",
+    name: "State Machine Designer",
+    tag: "Automata Theory",
+    desc: "Place states, drag transitions between them, mark start/accepting states, then feed in a string and watch it accept or reject live.",
+    accent: "#fbbf24",
+    glow: "rgba(251,191,36,0.35)",
+    demo: "https://state-machine-designer.vercel.app/",
+    repo: "https://github.com/Dhananjay-ku-seth/state-machine-designer",
+    icon: <><circle cx="6" cy="12" r="3.5" /><path d="M9.5 12h5m0 0l-2.5-2.5m2.5 2.5l-2.5 2.5" /><circle cx="18" cy="12" r="3.5" /></>,
+  },
+  {
+    id: "puzzle",
+    name: "Circuit Puzzle",
+    tag: "Logic Design Game",
+    desc: "Match a target truth table with the fewest gates. Some levels lock out the obvious gate, forcing you to build it from scratch.",
+    accent: "#fb7185",
+    glow: "rgba(251,113,133,0.35)",
+    demo: "https://circuit-puzzle-sand.vercel.app/",
+    repo: "https://github.com/Dhananjay-ku-seth/circuit-puzzle",
+    icon: <><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><path d="M15 17l2 2 4-4" /></>,
+  },
 ];
 
 function Logo() {
@@ -99,10 +121,11 @@ export default function App() {
       </header>
 
       <section className="hero">
-        <h2>Five interactive engineering tools. Zero installs.</h2>
+        <h2>Seven interactive engineering tools. Zero installs.</h2>
         <p>
-          DSP, control systems, digital logic, and communications — concepts that usually live in
-          textbooks and MATLAB scripts, turned into things you can click, drag, and tune in real time.
+          DSP, control systems, digital logic, communications, automata theory, and a puzzle game built
+          from the same logic engine — concepts that usually live in textbooks and MATLAB scripts, turned
+          into things you can click, drag, and tune in real time.
         </p>
       </section>
 
@@ -128,14 +151,14 @@ export default function App() {
       <section className="pricing">
         <div className="pricing-card free">
           <span className="ptag">Free</span>
-          <h3>All 5 tools, fully open</h3>
+          <h3>All 7 tools, fully open</h3>
           <p>Every demo above is free to use for personal, educational, and portfolio purposes — no account, no limits.</p>
         </div>
         <div className="pricing-card pro">
           <span className="ptag pro-tag">Pro · ₹29/mo</span>
           <h3>Cloud-saved sessions, everywhere</h3>
           <p>Sign in once, then save &amp; reload your circuits, tunings, and setups on every tool — plus export
-            Waveform Viewer diagrams as PNG, SVG, or VCD. One subscription unlocks Pro on all 5 tools.</p>
+            Waveform Viewer diagrams as PNG, SVG, or VCD. One subscription unlocks Pro on all 7 tools.</p>
           <a className="notify" href="https://logic-circuit-sim.vercel.app/" target="_blank" rel="noopener noreferrer">Sign in &amp; upgrade →</a>
         </div>
       </section>

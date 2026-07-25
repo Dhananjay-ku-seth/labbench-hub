@@ -88,6 +88,28 @@ const TOOLS: Tool[] = [
     repo: "https://github.com/Dhananjay-ku-seth/circuit-puzzle",
     icon: <><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><path d="M15 17l2 2 4-4" /></>,
   },
+  {
+    id: "battery",
+    name: "EV Battery Management Simulator",
+    tag: "Power Electronics",
+    desc: "Coulomb-counted state of charge, OCV/IR-drop cell voltage, a lumped thermal model with BMS thermal cutoff, and live passive cell balancing.",
+    accent: "#84cc16",
+    glow: "rgba(132,204,22,0.35)",
+    demo: "https://ev-battery-sim-six.vercel.app/",
+    repo: "https://github.com/Dhananjay-ku-seth/ev-battery-sim",
+    icon: <><rect x="2" y="7" width="17" height="10" rx="1.5" /><path d="M19 10.5v3" /><path d="M9.5 8.5l-3 5h2.7L8 18l4.5-6.5h-2.7z" /></>,
+  },
+  {
+    id: "energymeter",
+    name: "Smart Energy Meter Dashboard",
+    tag: "Power Systems",
+    desc: "Toggle household appliances live and watch real vs apparent power, power factor, voltage sag/swell, breaker-trip logic, and kWh billing update in real time.",
+    accent: "#0ea5e9",
+    glow: "rgba(14,165,233,0.35)",
+    demo: "https://smart-energy-meter-pink.vercel.app/",
+    repo: "https://github.com/Dhananjay-ku-seth/smart-energy-meter",
+    icon: <><path d="M4 17a8 8 0 0 1 16 0" /><path d="M12 17l4.5-5.5" /><circle cx="12" cy="17" r="1.3" /></>,
+  },
 ];
 
 function Logo() {
@@ -121,11 +143,11 @@ export default function App() {
       </header>
 
       <section className="hero">
-        <h2>Seven interactive engineering tools. Zero installs.</h2>
+        <h2>Nine interactive engineering tools. Zero installs.</h2>
         <p>
-          DSP, control systems, digital logic, communications, automata theory, and a puzzle game built
-          from the same logic engine — concepts that usually live in textbooks and MATLAB scripts, turned
-          into things you can click, drag, and tune in real time.
+          DSP, control systems, digital logic, communications, automata theory, power electronics, power
+          systems, and a puzzle game built from the same logic engine — concepts that usually live in
+          textbooks and MATLAB scripts, turned into things you can click, drag, and tune in real time.
         </p>
       </section>
 
@@ -151,14 +173,14 @@ export default function App() {
       <section className="pricing">
         <div className="pricing-card free">
           <span className="ptag">Free</span>
-          <h3>All 7 tools, fully open</h3>
+          <h3>All 9 tools, fully open</h3>
           <p>Every demo above is free to use for personal, educational, and portfolio purposes — no account, no limits.</p>
         </div>
         <div className="pricing-card pro">
           <span className="ptag pro-tag">Pro · ₹29/mo</span>
           <h3>Cloud-saved sessions, everywhere</h3>
           <p>Sign in once, then save &amp; reload your circuits, tunings, and setups on every tool — plus export
-            Waveform Viewer diagrams as PNG, SVG, or VCD. One subscription unlocks Pro on all 7 tools.</p>
+            Waveform Viewer diagrams as PNG, SVG, or VCD. One subscription unlocks Pro on all 9 tools.</p>
           <a className="notify" href="https://logic-circuit-sim.vercel.app/" target="_blank" rel="noopener noreferrer">Sign in &amp; upgrade →</a>
         </div>
       </section>

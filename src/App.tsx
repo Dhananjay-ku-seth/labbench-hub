@@ -80,7 +80,7 @@ const TOOLS: Tool[] = [
   {
     id: "puzzle",
     name: "Circuit Puzzle",
-    tag: "Logic Design Game",
+    tag: "Logic Design Challenge",
     desc: "Match a target truth table with the fewest gates. Some levels lock out the obvious gate, forcing you to build it from scratch.",
     accent: "#fb7185",
     glow: "rgba(251,113,133,0.35)",
@@ -146,8 +146,9 @@ export default function App() {
         <h2>Nine interactive engineering tools. Zero installs.</h2>
         <p>
           DSP, control systems, digital logic, communications, automata theory, power electronics, power
-          systems, and a puzzle game built from the same logic engine — concepts that usually live in
-          textbooks and MATLAB scripts, turned into things you can click, drag, and tune in real time.
+          systems, and a gamified logic-design challenge built from the same logic engine — concepts that
+          usually live in textbooks and MATLAB scripts, turned into things you can click, drag, and tune in
+          real time.
         </p>
       </section>
 

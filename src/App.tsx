@@ -95,6 +95,7 @@ const TOOLS: Tool[] = [
     desc: "Coulomb-counted state of charge, OCV/IR-drop cell voltage, a lumped thermal model with BMS thermal cutoff, and live passive cell balancing.",
     accent: "#84cc16",
     glow: "rgba(132,204,22,0.35)",
+    demo: "https://ev-battery-sim-six.vercel.app/",
     repo: "https://github.com/Dhananjay-ku-seth/ev-battery-sim",
     icon: <><rect x="2" y="7" width="17" height="10" rx="1.5" /><path d="M19 10.5v3" /><path d="M9.5 8.5l-3 5h2.7L8 18l4.5-6.5h-2.7z" /></>,
   },

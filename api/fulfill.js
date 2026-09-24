@@ -13,6 +13,10 @@ export const config = {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Best-effort duplicate guard: Razorpay can deliver the same event more than once. Payment ids already
+// fulfilled by this warm function instance are skipped. (A durable guard would need a database.)
+const fulfilled = new Set();
+
 // Match on the Payment Page title/description you set in Razorpay.
 // Keys are matched as a case-insensitive substring of the payment description.
 const PRODUCTS = [
@@ -53,7 +57,12 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "server not configured" });
   }
 
-  const rawBody = await getRawBody(req);
+  let rawBody;
+  try {
+    rawBody = await getRawBody(req);
+  } catch {
+    return res.status(400).json({ error: "unreadable body" });
+  }
   const headerSignature = req.headers["x-razorpay-signature"];
   const expectedSignature = crypto.createHmac("sha256", secret).update(rawBody).digest("hex");
 
@@ -66,7 +75,12 @@ export default async function handler(req, res) {
     return res.status(403).json({ error: "invalid signature" });
   }
 
-  const event = JSON.parse(rawBody.toString("utf-8"));
+  let event;
+  try {
+    event = JSON.parse(rawBody.toString("utf-8"));
+  } catch {
+    return res.status(400).json({ error: "invalid json" });
+  }
 
   if (event.event !== "payment.captured") {
     return res.status(200).json({ ok: true, skipped: "not a payment.captured event" });
@@ -78,6 +92,10 @@ export default async function handler(req, res) {
 
   if (!email) {
     return res.status(200).json({ ok: true, skipped: "no buyer email on payment" });
+  }
+
+  if (payment?.id && fulfilled.has(payment.id)) {
+    return res.status(200).json({ ok: true, skipped: "already fulfilled" });
   }
 
   const product = PRODUCTS.find((p) => description.includes(p.match));
@@ -118,29 +136,37 @@ export default async function handler(req, res) {
     `<tr><td style="padding:4px 12px 4px 0;color:#666">Date</td><td>${paidAt} IST</td></tr>` +
     `</table>`;
 
-  await transporter.sendMail({
-    from: `LabBench <${process.env.GMAIL_USER}>`,
-    to: email,
-    subject: `Your ${product.label} download (Payment ${payment.id})`,
-    text:
-      `Thanks for supporting LabBench!\n\n` +
-      summaryText +
-      `\nYour PDF, "${product.label}", is attached.\n\n` +
-      `More tools: https://labbench-hub.vercel.app/\n\n` +
-      `- Dhananjay`,
-    html:
-      `<p>Thanks for supporting LabBench!</p>` +
-      summaryHtml +
-      `<p>Your PDF, "<b>${product.label}</b>", is attached.</p>` +
-      `<p>More tools: <a href="https://labbench-hub.vercel.app/">labbench-hub.vercel.app</a></p>` +
-      `<p>- Dhananjay</p>`,
-    attachments: [
-      {
-        filename: product.attachmentName,
-        path: path.join(__dirname, "assets", product.file),
-      },
-    ],
-  });
+  try {
+    await transporter.sendMail({
+      from: `LabBench <${process.env.GMAIL_USER}>`,
+      to: email,
+      subject: `Your ${product.label} download (Payment ${payment.id})`,
+      text:
+        `Thanks for supporting LabBench!\n\n` +
+        summaryText +
+        `\nYour PDF, "${product.label}", is attached.\n\n` +
+        `More tools: https://labbench-hub.vercel.app/\n\n` +
+        `- Dhananjay`,
+      html:
+        `<p>Thanks for supporting LabBench!</p>` +
+        summaryHtml +
+        `<p>Your PDF, "<b>${product.label}</b>", is attached.</p>` +
+        `<p>More tools: <a href="https://labbench-hub.vercel.app/">labbench-hub.vercel.app</a></p>` +
+        `<p>- Dhananjay</p>`,
+      attachments: [
+        {
+          filename: product.attachmentName,
+          path: path.join(__dirname, "assets", product.file),
+        },
+      ],
+    });
+
+  } catch (err) {
+    // Non-2xx so Razorpay retries the webhook.
+    console.error("fulfill: sending email failed:", err);
+    return res.status(500).json({ error: "email failed" });
+  }
+  if (payment.id) fulfilled.add(payment.id);
 
   return res.status(200).json({ ok: true, sent: product.label, to: email });
 }

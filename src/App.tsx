@@ -5,7 +5,7 @@ type Tool = {
   desc: string;
   accent: string;
   glow: string;
-  demo: string;
+  demo?: string;
   repo: string;
   icon: JSX.Element;
 };
@@ -95,7 +95,6 @@ const TOOLS: Tool[] = [
     desc: "Coulomb-counted state of charge, OCV/IR-drop cell voltage, a lumped thermal model with BMS thermal cutoff, and live passive cell balancing.",
     accent: "#84cc16",
     glow: "rgba(132,204,22,0.35)",
-    demo: "https://ev-battery-sim-six.vercel.app/",
     repo: "https://github.com/Dhananjay-ku-seth/ev-battery-sim",
     icon: <><rect x="2" y="7" width="17" height="10" rx="1.5" /><path d="M19 10.5v3" /><path d="M9.5 8.5l-3 5h2.7L8 18l4.5-6.5h-2.7z" /></>,
   },
@@ -164,7 +163,7 @@ export default function App() {
             <h3>{t.name}</h3>
             <p>{t.desc}</p>
             <div className="card-links">
-              <a className="launch" href={t.demo} target="_blank" rel="noopener noreferrer">Launch ▶</a>
+              {t.demo ? <a className="launch" href={t.demo} target="_blank" rel="noopener noreferrer">Launch ▶</a> : <span className="launch" aria-disabled="true" style={{ opacity: 0.55, cursor: "default" }}>Live demo coming soon</span>}
               <a className="src" href={t.repo} target="_blank" rel="noopener noreferrer">Source</a>
             </div>
           </article>
